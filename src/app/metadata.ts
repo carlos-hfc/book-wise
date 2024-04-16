@@ -1,12 +1,13 @@
 import { Metadata } from "next"
 
 export const config: Metadata = {
-  title: "BookWise",
+  title: {
+    default: "BookWise",
+    template: "%s | BookWise",
+  },
   description: "Recomende e avalie os melhores livros.",
   twitter: {
     card: "summary_large_image",
-    title: "BookWise",
-    description: "Recomende e avalie os melhores livros.",
     images: {
       url: "/favicon/favicon-2048x2048.png",
       alt: "BookWise Logo",
@@ -15,10 +16,8 @@ export const config: Metadata = {
   openGraph: {
     type: "website",
     url: new URL(String(process.env.NEXT_PUBLIC_BASE_URL)),
-    title: "BookWise",
     locale: "pt_BR",
     siteName: "BookWise",
-    description: "Recomende e avalie os melhores livros.",
     images: {
       url: "/favicon/favicon-2048x2048.png",
       alt: "BookWise Logo",
