@@ -1,54 +1,64 @@
 import { CaretRight, ChartLineUp } from "@phosphor-icons/react/dist/ssr"
 
 import { Action } from "@/components/Action"
+import { LastRead } from "@/components/LastRead"
 import { Review } from "@/components/Review"
-import { Sidebar } from "@/components/Sidebar"
 import { Trending } from "@/components/Trending"
 
 import { Container, Content, LatestReviews, TrendingBooks } from "./styles"
 
 export default function Home() {
   return (
-    <>
-      <Sidebar />
+    <Container>
+      <h1>
+        <ChartLineUp />
+        Início
+      </h1>
 
-      <Container>
-        <h1>
-          <ChartLineUp />
-          Início
-        </h1>
+      <Content>
+        <LatestReviews>
+          <p>
+            Sua última leitura
+            <Action
+              href="/"
+              color="purple"
+              size="small"
+            >
+              Ver todos
+              <CaretRight />
+            </Action>
+          </p>
 
-        <Content>
-          <LatestReviews>
-            <p>Avaliações mais recentes</p>
+          <LastRead />
 
-            <Review />
-            <Review />
-            <Review />
-            <Review />
-            <Review />
-          </LatestReviews>
+          <p>Avaliações mais recentes</p>
 
-          <TrendingBooks>
-            <p>
-              Livros populares
-              <Action
-                href="/"
-                color="purple"
-                size="small"
-              >
-                Ver todos
-                <CaretRight />
-              </Action>
-            </p>
+          <Review />
+          <Review />
+          <Review />
+          <Review />
+          <Review />
+        </LatestReviews>
 
-            <Trending />
-            <Trending />
-            <Trending />
-            <Trending />
-          </TrendingBooks>
-        </Content>
-      </Container>
-    </>
+        <TrendingBooks>
+          <p>
+            Livros populares
+            <Action
+              href="/"
+              color="purple"
+              size="small"
+            >
+              Ver todos
+              <CaretRight />
+            </Action>
+          </p>
+
+          <Trending />
+          <Trending />
+          <Trending />
+          <Trending />
+        </TrendingBooks>
+      </Content>
+    </Container>
   )
 }

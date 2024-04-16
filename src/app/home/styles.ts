@@ -1,3 +1,4 @@
+import { LastReadContainer } from "@/components/LastRead/styles"
 import { styled } from "@/styles"
 
 export const Container = styled("main", {
@@ -29,11 +30,19 @@ export const Content = styled("div", {
 export const LatestReviews = styled("div", {
   width: "65%",
 
+  [`> ${LastReadContainer}`]: {
+    marginBottom: "$10",
+  },
+
   "> * + *": {
     marginTop: "$3",
   },
 
   p: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginTop: 0,
     marginBottom: "$4",
     color: "$gray-100",
     lineHeight: "$base",
