@@ -1,13 +1,16 @@
 import Image from "next/image"
+import { ComponentProps } from "react"
 
 import book from "@/images/Book.png"
 
 import { Rating } from "../Rating"
 import { TrendingContainer, TrendingContent, TrendingImage } from "./styles"
 
-export function Trending() {
+interface TrendingProps extends ComponentProps<typeof TrendingContainer> {}
+
+export function Trending(props: TrendingProps) {
   return (
-    <TrendingContainer>
+    <TrendingContainer {...props}>
       <TrendingImage>
         <Image
           src={book}

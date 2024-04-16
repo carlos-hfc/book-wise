@@ -9,10 +9,34 @@ export const TrendingContainer = styled("div", {
   padding: "$4 $5",
   display: "flex",
   gap: "$5",
+  overflow: "hidden",
+  position: "relative",
   cursor: "pointer",
 
   "&:hover": {
     borderColor: "$gray-600",
+  },
+
+  variants: {
+    read: {
+      true: {
+        "&::before": {
+          content: "LIDO",
+          position: "absolute",
+          backgroundColor: "$green-300",
+          color: "$green-100",
+          right: 0,
+          top: 0,
+          zIndex: 1,
+          fontWeight: "$bold",
+          fontSize: "$xs",
+          textTransform: "uppercase",
+          lineHeight: "$shorter",
+          padding: "$1 $2",
+          borderBottomLeftRadius: 4,
+        },
+      },
+    },
   },
 })
 
@@ -37,6 +61,10 @@ export const TrendingContent = styled("div", {
     lineHeight: "$short",
     fontSize: "$md",
     fontWeight: "$bold",
+    overflow: "hidden",
+    display: "-webkit-box",
+    "-webkit-box-orient": "vertical",
+    "-webkit-line-clamp": 2,
   },
 
   span: {

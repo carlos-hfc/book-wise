@@ -16,6 +16,7 @@ export const SidebarContainer = styled("aside", {
   backgroundImage: "url(/bg-sidebar.png)",
   backgroundPosition: "center",
   backgroundRepeat: "no-repeat",
+  backgroundSize: "cover",
   borderRadius: 12,
   maxWidth: 240,
   width: "100%",

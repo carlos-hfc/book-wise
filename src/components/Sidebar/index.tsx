@@ -19,23 +19,22 @@ export function Sidebar() {
           width="134"
           height="26"
         />
+
         <SidebarNav>
-          <NavItem
-            href="/"
-            active
-          >
+          <NavItem href="/home">
             <ChartLineUp />
             Início
           </NavItem>
-          <NavItem href="/">
+          <NavItem href="/explorar">
             <Binoculars />
             Explorar
           </NavItem>
-          <NavItem href="/">
+          <NavItem href="/perfil">
             <User />
             Perfil
           </NavItem>
         </SidebarNav>
+
         <Action
           href="/"
           color="white"
