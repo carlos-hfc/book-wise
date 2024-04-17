@@ -1,6 +1,9 @@
 import { Binoculars, MagnifyingGlass } from "@phosphor-icons/react/dist/ssr"
 
-import { Container, Header, Input } from "./styles"
+import { Tag } from "@/components/Tag"
+import { Trending } from "@/components/Trending"
+
+import { BooksContent, Container, ExploreTags, Header, Input } from "./styles"
 
 export default function Explorar() {
   return (
@@ -16,6 +19,21 @@ export default function Explorar() {
           <MagnifyingGlass />
         </label>
       </Header>
+
+      <ExploreTags>
+        {Array.from({ length: 10 }).map((_, i) => (
+          <Tag key={i}>Tudo</Tag>
+        ))}
+      </ExploreTags>
+
+      <BooksContent>
+        {Array.from({ length: 15 }).map((_, i) => (
+          <Trending
+            key={i}
+            size="md"
+          />
+        ))}
+      </BooksContent>
     </Container>
   )
 }

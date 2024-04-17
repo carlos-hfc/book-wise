@@ -1,7 +1,7 @@
 import { styled } from "@/styles"
 
 export const Container = styled("main", {
-  padding: "72px 96px",
+  padding: "4.5rem 6rem",
   flex: 1,
 
   h1: {
@@ -23,9 +23,11 @@ export const Container = styled("main", {
 export const Header = styled("header", {
   display: "flex",
   justifyContent: "space-between",
+  alignItems: "flex-start",
 
   label: {
     position: "relative",
+    cursor: "auto",
 
     "&:focus-within, &:has(input:not(:placeholder-shown))": {
       svg: {
@@ -54,7 +56,7 @@ export const Input = styled("input", {
   paddingBottom: ".875rem",
   paddingLeft: "$5",
   paddingRight: "3rem",
-  borderRadius: 4,
+  borderRadius: "$base",
   width: 430,
 
   "&::placeholder": {
@@ -64,4 +66,18 @@ export const Input = styled("input", {
   "&:focus, &:not(:placeholder-shown)": {
     borderColor: "$green-300",
   },
+})
+
+export const ExploreTags = styled("div", {
+  display: "flex",
+  alignItems: "center",
+  gap: "$3",
+  margin: "$10 0 3rem",
+})
+
+export const BooksContent = styled("div", {
+  display: "grid",
+  gridTemplateColumns: "repeat(3,1fr)",
+  gridTemplateRows: "auto",
+  gap: "$5",
 })
