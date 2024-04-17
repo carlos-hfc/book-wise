@@ -2,8 +2,20 @@ import { styled } from "@/styles"
 
 import { RatingContainer } from "../Rating/styles"
 
+export const TrendingImage = styled("div", {
+  position: "relative",
+  width: 64,
+  height: 94,
+  aspectRatio: "64 / 94",
+
+  img: {
+    borderRadius: "$base",
+    objectFit: "cover",
+  },
+})
+
 export const TrendingContainer = styled("div", {
-  borderRadius: 8,
+  borderRadius: "$lg",
   backgroundColor: "$gray-700",
   border: "2px solid transparent",
   padding: "$4 $5",
@@ -37,18 +49,28 @@ export const TrendingContainer = styled("div", {
         },
       },
     },
+
+    size: {
+      md: {
+        [`> ${TrendingImage}`]: {
+          width: 108,
+          height: 152,
+          aspectRatio: "108 / 152",
+        },
+      },
+      sm: {
+        [`> ${TrendingImage}`]: {
+          width: 64,
+          height: 94,
+          aspectRatio: "64 / 94",
+        },
+      },
+    },
   },
-})
 
-export const TrendingImage = styled("div", {
-  position: "relative",
-  width: 64,
-  height: 94,
-  aspectRatio: "64 / 94",
-
-  img: {
-    borderRadius: 4,
-    objectFit: "cover",
+  defaultVariants: {
+    read: false,
+    size: "sm",
   },
 })
 
