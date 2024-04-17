@@ -6,13 +6,13 @@ import {
 } from "@phosphor-icons/react/dist/ssr"
 import Image from "next/image"
 
-import { Action } from "../Action"
-import { NavItem, SidebarBox, SidebarContainer, SidebarNav } from "./styles"
+import { Action } from "./action"
+import { NavItem } from "./nav-item"
 
 export function Sidebar() {
   return (
-    <SidebarBox>
-      <SidebarContainer>
+    <div className="relative h-full w-64">
+      <aside className="fixed left-5 top-5 flex h-[calc(100vh_-_40px)] w-64 flex-col items-center justify-between gap-16 rounded-xl bg-[url('/bg-sidebar.png')] bg-cover bg-center bg-no-repeat pb-6 pt-10">
         <Image
           src="/logo-full.png"
           alt="BookWise Logo"
@@ -20,7 +20,7 @@ export function Sidebar() {
           height="26"
         />
 
-        <SidebarNav>
+        <nav className="flex flex-1 flex-col gap-4">
           <NavItem href="/home">
             <ChartLineUp />
             Início
@@ -33,16 +33,13 @@ export function Sidebar() {
             <User />
             Perfil
           </NavItem>
-        </SidebarNav>
+        </nav>
 
-        <Action
-          href="/"
-          color="white"
-        >
+        <Action href="/">
           Fazer login
-          <SignIn color="#50B2C0" />
+          <SignIn className="size-5 text-green-100" />
         </Action>
-      </SidebarContainer>
-    </SidebarBox>
+      </aside>
+    </div>
   )
 }

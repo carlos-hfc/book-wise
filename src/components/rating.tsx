@@ -1,18 +1,19 @@
 import { Star } from "@phosphor-icons/react/dist/ssr"
 import { ComponentProps } from "react"
 
-import { RatingContainer } from "./styles"
+import { cn } from "@/utils/cn"
 
-interface RatingProps extends ComponentProps<typeof RatingContainer> {
+interface RatingProps extends ComponentProps<"div"> {
   rating: number
 }
 
 export function Rating({ rating, ...props }: RatingProps) {
   return (
-    <RatingContainer
+    <div
+      {...props}
       aria-label={`Avaliado em ${rating} de 5`}
       title={`Avaliado em ${rating} de 5`}
-      {...props}
+      className={cn("flex space-x-1 *:text-purple-100", props.className)}
     >
       {Array.from({ length: 5 }, (_, i) => i + 1).map(star => (
         <Star
@@ -21,6 +22,6 @@ export function Rating({ rating, ...props }: RatingProps) {
           aria-label={`Avaliação de ${star} estrela(s)`}
         />
       ))}
-    </RatingContainer>
+    </div>
   )
 }

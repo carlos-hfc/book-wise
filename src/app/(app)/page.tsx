@@ -1,51 +1,48 @@
-"use client"
-
 import Image from "next/image"
 import Link from "next/link"
 
-import { AccessButton } from "@/components/AccessButton"
-
-import {
-  Button,
-  Container,
-  FormContainer,
-  FormHeader,
-  Icon,
-  ImageContainer,
-} from "./styles"
+import { AccessButton } from "@/components/access-button"
 
 export default function App() {
   return (
-    <Container>
-      <ImageContainer>
+    <div className="flex h-dvh w-full items-center justify-between p-5">
+      <div className="relative flex h-full w-full max-w-[600px] items-center justify-center overflow-hidden rounded-[10px] bg-[url('/bg-login.png')] bg-right bg-no-repeat before:absolute before:z-10 before:size-full before:bg-black/60 before:bg-[linear-gradient(0deg,rgba(42,40,121,0.6),rgba(42,40,121,0.6))] before:backdrop-blur-[1px]">
         <Image
           src="/logo-full.png"
           alt="BookWise Logo"
           width="256"
           height="50"
+          className="z-20"
         />
-      </ImageContainer>
+      </div>
 
-      <FormContainer>
+      <div className="flex flex-1 items-center justify-center">
         <div>
-          <FormHeader>
-            <h1>Boas vindas!</h1>
-            <p>Faça seu login ou acesse como visitante.</p>
-          </FormHeader>
+          <header className="mb-10">
+            <h1 className="text-2xl font-bold leading-snug text-gray-100">
+              Boas vindas!
+            </h1>
+            <p className="text-base leading-relaxed text-gray-200">
+              Faça seu login ou acesse como visitante.
+            </p>
+          </header>
 
-          <AccessButton access="google">Entrar com Google</AccessButton>
+          <div className="space-y-4">
+            <AccessButton access="google">Entrar com Google</AccessButton>
 
-          <AccessButton access="github">Entrar com GitHub</AccessButton>
+            <AccessButton access="github">Entrar com GitHub</AccessButton>
 
-          <Button
-            as={Link}
-            href="/home"
-          >
-            <Icon src="/icons/rocket.svg" />
-            Acessar como visitante
-          </Button>
+            <AccessButton
+              as={Link}
+              href="/home"
+              access="rocket"
+              prefetch={false}
+            >
+              Acessar como visitante
+            </AccessButton>
+          </div>
         </div>
-      </FormContainer>
-    </Container>
+      </div>
+    </div>
   )
 }

@@ -1,29 +1,24 @@
-import { styled } from "@/styles"
+import { ComponentProps } from "react"
 
-export const Tag = styled("button", {
-  all: "unset",
-  padding: "$1 $4",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  borderRadius: "$full",
-  border: "1px solid $purple-100",
-  color: "$purple-100",
-  fontSize: "$md",
-  cursor: "pointer",
+import { cn } from "@/utils/cn"
 
-  "&:hover": {
-    color: "$gray-100",
-    backgroundColor: "$purple-200",
-  },
+interface TagProps extends ComponentProps<"button"> {
+  selected?: boolean
+}
 
-  variants: {
-    selected: {
-      true: {
-        color: "$gray-100",
-        backgroundColor: "$purple-200",
-        borderColor: "$purple-200",
-      },
-    },
-  },
-})
+export function Tag({ selected = false, ...props }: TagProps) {
+  const selectedS = selected
+    ? "text-gray-100 bg-purple-200 border-purple-200"
+    : "border-purple-100 text-purple-100"
+
+  return (
+    <button
+      {...props}
+      className={cn(
+        "flex cursor-pointer items-center justify-center rounded-full border px-4 py-1 text-base hover:bg-purple-200 hover:text-gray-100",
+        selectedS,
+        props.className,
+      )}
+    />
+  )
+}

@@ -1,53 +1,34 @@
 import Link from "next/link"
+import { ComponentProps } from "react"
 
-import { styled } from "@/styles"
+import { cn } from "@/utils/cn"
 
-export const Action = styled(Link, {
-  display: "flex",
-  alignItems: "center",
-  padding: "$1 $2",
-  textDecoration: "none",
-  fontWeight: "$bold",
-  borderRadius: "$base",
-  lineHeight: "$base",
+interface ActionProps extends ComponentProps<typeof Link> {
+  color?: "white" | "purple"
+  size?: "md" | "sm"
+}
 
-  svg: {
-    width: 20,
-    height: 20,
-  },
+export function Action({
+  color = "white",
+  size = "md",
+  ...props
+}: ActionProps) {
+  const colorS =
+    color === "white"
+      ? "text-gray-200 hover:bg-gray-200/[.04]"
+      : "text-purple-100 hover:bg-purple-100/[.06]"
 
-  variants: {
-    color: {
-      white: {
-        color: "$gray-200",
+  const sizeS = size === "md" ? "gap-3 text-base" : "gap-2 text-sm"
 
-        "&:hover": {
-          backgroundColor: "color-mix(in srgb, $gray-200 4%, transparent)",
-        },
-      },
-      purple: {
-        color: "$purple-100",
-
-        "&:hover": {
-          backgroundColor: "color-mix(in srgb, $purple-100 6%, transparent)",
-        },
-      },
-    },
-
-    size: {
-      medium: {
-        fontSize: "$md",
-        gap: "$3",
-      },
-      small: {
-        fontSize: "$sm",
-        gap: "$2",
-      },
-    },
-  },
-
-  defaultVariants: {
-    color: "white",
-    size: "medium",
-  },
-})
+  return (
+    <Link
+      {...props}
+      className={cn(
+        "flex items-center rounded px-2 py-1 font-bold leading-relaxed no-underline",
+        colorS,
+        sizeS,
+        props.className,
+      )}
+    />
+  )
+}
