@@ -12,7 +12,7 @@ import { NavItem } from "./nav-item"
 export function Sidebar() {
   return (
     <div className="relative h-full w-64">
-      <aside className="fixed left-5 top-5 flex h-[calc(100vh_-_40px)] w-64 flex-col items-center justify-between gap-16 rounded-xl bg-[url('/bg-sidebar.png')] bg-cover bg-center bg-no-repeat pb-6 pt-10">
+      <aside className="fixed left-5 top-5 flex h-[calc(100vh_-_40px)] w-64 flex-col items-center justify-between gap-16 rounded-xl bg-[url('/bg-sidebar.png')] bg-cover bg-right-top bg-no-repeat pb-6 pt-10">
         <Image
           src="/logo-full.png"
           alt="BookWise Logo"
@@ -29,7 +29,7 @@ export function Sidebar() {
             <Binoculars />
             Explorar
           </NavItem>
-          <NavItem href="/perfil">
+          <NavItem href="/perfil/1">
             <User />
             Perfil
           </NavItem>
