@@ -17,7 +17,7 @@ export const SidebarContainer = styled("aside", {
   backgroundPosition: "center",
   backgroundRepeat: "no-repeat",
   backgroundSize: "cover",
-  borderRadius: 12,
+  borderRadius: "$xl",
   maxWidth: 240,
   width: "100%",
   padding: "$10 0 $6",

@@ -2,7 +2,7 @@ import { LastReadContainer } from "@/components/LastRead/styles"
 import { styled } from "@/styles"
 
 export const Container = styled("main", {
-  padding: "72px 96px",
+  padding: "4.5rem 6rem",
   flex: 1,
 
   h1: {

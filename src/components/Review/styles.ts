@@ -5,7 +5,7 @@ export const ReviewContainer = styled("div", {
   display: "flex",
   flexDirection: "column",
   gap: "$8",
-  borderRadius: 8,
+  borderRadius: "$lg",
   padding: "$6",
 })
 
@@ -50,7 +50,7 @@ export const ReviewImage = styled("div", {
   aspectRatio: "108 / 152",
 
   img: {
-    borderRadius: 4,
+    borderRadius: "$base",
     objectFit: "cover",
   },
 })

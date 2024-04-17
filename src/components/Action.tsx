@@ -8,7 +8,7 @@ export const Action = styled(Link, {
   padding: "$1 $2",
   textDecoration: "none",
   fontWeight: "$bold",
-  borderRadius: 4,
+  borderRadius: "$base",
   lineHeight: "$base",
 
   svg: {

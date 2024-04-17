@@ -1,7 +1,7 @@
 import { styled } from "@/styles"
 
 export const LastReadContainer = styled("div", {
-  borderRadius: 8,
+  borderRadius: "$lg",
   backgroundColor: "$gray-600",
   border: "2px solid transparent",
   padding: "$5 $6",
@@ -21,7 +21,7 @@ export const LastReadImage = styled("div", {
   aspectRatio: "108 / 152",
 
   img: {
-    borderRadius: 4,
+    borderRadius: "$base",
     objectFit: "cover",
   },
 })
