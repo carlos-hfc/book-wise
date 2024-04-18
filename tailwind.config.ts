@@ -28,6 +28,9 @@ const config: Config = {
           700: "#181C2A",
           800: "#0E1116",
         },
+        danger: {
+          light: "#F75A68",
+        },
       },
       fontFamily: {
         sans: ["var(--nunito)", "sans-serif"],
