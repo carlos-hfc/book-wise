@@ -11,7 +11,7 @@ export function Input(props: InputProps) {
       <input
         {...props}
         className={cn(
-          "peer w-[430px] rounded border border-green-300 bg-gray-800 py-[.875rem] pl-5 pr-12 text-gray-200 outline-none placeholder:text-gray-400 placeholder-shown:border-gray-500 focus:border-green-300",
+          "peer w-[430px] rounded border border-green-300 bg-gray-800 py-[.875rem] pl-5 pr-12 text-sm leading-relaxed text-gray-200 outline-none placeholder:text-gray-400 placeholder-shown:border-gray-500 focus:border-green-300",
           props.className,
         )}
       />

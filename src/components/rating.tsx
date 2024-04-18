@@ -5,9 +5,12 @@ import { cn } from "@/utils/cn"
 
 interface RatingProps extends ComponentProps<"div"> {
   rating: number
+  size?: "md" | "sm"
 }
 
-export function Rating({ rating, ...props }: RatingProps) {
+export function Rating({ rating, size = "sm", ...props }: RatingProps) {
+  const sizeS = size === "sm" ? "size-4" : "size-7"
+
   return (
     <div
       {...props}
@@ -18,6 +21,7 @@ export function Rating({ rating, ...props }: RatingProps) {
       {Array.from({ length: 5 }, (_, i) => i + 1).map(star => (
         <Star
           key={star}
+          className={sizeS}
           weight={star <= rating ? "fill" : "regular"}
           aria-label={`Avaliação de ${star} estrela(s)`}
         />
