@@ -3,6 +3,7 @@ import "@/styles/global.css"
 import { Nunito } from "next/font/google"
 
 import { BookProvider } from "@/contexts/book"
+import { AuthProvider } from "@/provider/auth-provider"
 import { cn } from "@/utils/cn"
 
 import { config } from "./metadata"
@@ -24,7 +25,9 @@ export default function RootLayout({
           "flex min-h-dvh bg-gray-800 font-sans antialiased [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-600 [&::-webkit-scrollbar-thumb]:shadow-[inset_0_0_0_1px] [&::-webkit-scrollbar-thumb]:shadow-gray-700 [&::-webkit-scrollbar-track]:bg-gray-700 [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar]:rounded-full",
         )}
       >
-        <BookProvider>{children}</BookProvider>
+        <AuthProvider>
+          <BookProvider>{children}</BookProvider>
+        </AuthProvider>
       </body>
     </html>
   )
