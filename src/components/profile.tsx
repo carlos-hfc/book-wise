@@ -4,18 +4,17 @@ import {
   Books,
   UserList,
 } from "@phosphor-icons/react/dist/ssr"
-import Image from "next/image"
+
+import { Avatar } from "./avatar"
 
 export function Profile() {
   return (
     <div className="flex flex-col items-center border-l border-gray-700 px-14">
       <div className="flex flex-col items-center pb-2">
-        <Image
+        <Avatar
           src="https://github.com/carlos-hfc.png"
           alt=""
-          width="72"
-          height="72"
-          className="size-18 rounded-full border border-transparent bg-gradient-vertical bg-clip-border"
+          size="md"
         />
 
         <h2 className="mt-5 text-xl font-bold leading-snug text-gray-100">

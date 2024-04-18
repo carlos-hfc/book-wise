@@ -1,17 +1,15 @@
 import Image from "next/image"
 
+import { Avatar } from "./avatar"
 import { Rating } from "./rating"
 
 export function Review() {
   return (
     <div className="flex flex-col gap-8 rounded-lg bg-gray-700 p-6">
       <header className="flex justify-between gap-4">
-        <Image
+        <Avatar
           src="https://github.com/carlos-hfc.png"
           alt=""
-          width="40"
-          height="40"
-          className="size-10 rounded-full border border-transparent bg-gradient-vertical bg-clip-border"
         />
 
         <div className="flex-1">

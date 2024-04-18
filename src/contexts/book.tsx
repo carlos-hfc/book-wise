@@ -16,6 +16,7 @@ import {
 } from "react"
 import { createPortal } from "react-dom"
 
+import { Avatar } from "@/components/avatar"
 import { Comment } from "@/components/comment"
 import { Rating } from "@/components/rating"
 
@@ -137,12 +138,9 @@ export function BookProvider({ children }: BookProviderProps) {
                 <div className="space-y-3">
                   <div className="flex flex-col gap-5 rounded-lg bg-gray-700 p-6">
                     <header className="flex items-center gap-6">
-                      <Image
+                      <Avatar
                         src="https://github.com/carlos-hfc.png"
                         alt=""
-                        width="40"
-                        height="40"
-                        className="size-10 rounded-full border border-transparent bg-gradient-vertical bg-clip-border"
                       />
 
                       <div className="flex-1">

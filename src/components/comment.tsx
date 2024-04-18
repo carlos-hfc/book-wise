@@ -1,7 +1,6 @@
-import Image from "next/image"
-
 import { cn } from "@/utils/cn"
 
+import { Avatar } from "./avatar"
 import { Rating } from "./rating"
 
 interface CommentProps {
@@ -14,12 +13,9 @@ export function Comment({ isMine = false }: CommentProps) {
   return (
     <div className={cn("flex flex-col gap-5 rounded-lg p-6", mineS)}>
       <header className="flex items-start gap-4">
-        <Image
+        <Avatar
           src="https://github.com/carlos-hfc.png"
           alt=""
-          width="40"
-          height="40"
-          className="size-10 rounded-full border border-transparent bg-gradient-vertical bg-clip-border"
         />
 
         <div className="flex-1">
