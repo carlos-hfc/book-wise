@@ -1,9 +1,28 @@
+"use client"
+
 import Image from "next/image"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
+import { signIn, useSession } from "next-auth/react"
+import { useEffect } from "react"
 
 import { AccessButton } from "@/components/access-button"
 
 export default function App() {
+  const session = useSession()
+
+  const router = useRouter()
+
+  useEffect(() => {
+    if (session.status === "authenticated") {
+      router.replace("/home")
+    }
+  }, [router, session])
+
+  async function handleConnect() {
+    await signIn("github")
+  }
+
   return (
     <div className="flex h-dvh w-full items-center justify-between p-5">
       <div className="relative flex h-full w-full max-w-[600px] items-center justify-center overflow-hidden rounded-[10px] bg-[url('/bg-login.png')] bg-right bg-no-repeat before:absolute before:z-10 before:size-full before:bg-black/60 before:bg-[linear-gradient(0deg,rgba(42,40,121,0.6),rgba(42,40,121,0.6))] before:backdrop-blur-[1px]">
@@ -30,7 +49,12 @@ export default function App() {
           <div className="space-y-4">
             <AccessButton access="google">Entrar com Google</AccessButton>
 
-            <AccessButton access="github">Entrar com GitHub</AccessButton>
+            <AccessButton
+              access="github"
+              onClick={handleConnect}
+            >
+              Entrar com GitHub
+            </AccessButton>
 
             <AccessButton
               as={Link}
