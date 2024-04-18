@@ -20,6 +20,7 @@ export function buildNextAuthOptions(
             name: profile.name!,
             email: profile.email,
             avatarUrl: profile.avatar_url,
+            createdAt: "",
           }
         },
       }),

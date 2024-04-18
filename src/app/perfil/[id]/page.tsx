@@ -1,10 +1,25 @@
 import { User } from "@phosphor-icons/react/dist/ssr"
+import { notFound } from "next/navigation"
 
+import { UrlParams } from "@/@types"
 import { BookCard } from "@/components/book-card"
 import { Input } from "@/components/input"
 import { Profile } from "@/components/profile"
 
-export default function Perfil() {
+interface PerfilProps extends UrlParams<"id"> {}
+
+export default async function Perfil({ params }: PerfilProps) {
+  const response = await fetch(
+    `http://localhost:3000/api/perfil/${params.id}`,
+    { cache: "no-cache" },
+  )
+
+  if (response.status !== 200) {
+    notFound()
+  }
+
+  const { user } = await response.json()
+
   return (
     <main className="flex-1 px-24 py-18">
       <h1 className="flex items-center gap-3 text-2xl leading-snug text-gray-100">
@@ -30,7 +45,7 @@ export default function Perfil() {
 
         <div className="relative w-2/6">
           <div className="fixed">
-            <Profile />
+            <Profile user={user} />
           </div>
         </div>
       </div>

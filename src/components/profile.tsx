@@ -4,24 +4,35 @@ import {
   Books,
   UserList,
 } from "@phosphor-icons/react/dist/ssr"
+import { format, parseISO } from "date-fns"
 
 import { Avatar } from "./avatar"
 
-export function Profile() {
+interface ProfileProps {
+  user: {
+    id: string
+    name: string
+    email: string
+    avatarUrl: string
+    createdAt: string
+  }
+}
+
+export function Profile({ user }: ProfileProps) {
   return (
     <div className="flex flex-col items-center border-l border-gray-700 px-14">
       <div className="flex flex-col items-center pb-2">
         <Avatar
-          src="https://github.com/carlos-hfc.png"
-          alt=""
+          src={user.avatarUrl}
+          alt={user.name}
           size="md"
         />
 
         <h2 className="mt-5 text-xl font-bold leading-snug text-gray-100">
-          Carlos Faustino
+          {user.name}
         </h2>
         <span className="text-sm lowercase text-gray-400">
-          membro desde 2024
+          membro desde {format(parseISO(String(user.createdAt)), "yyyy")}
         </span>
       </div>
 

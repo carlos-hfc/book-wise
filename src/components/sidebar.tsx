@@ -8,6 +8,7 @@ import {
   User,
 } from "@phosphor-icons/react/dist/ssr"
 import Image from "next/image"
+import { useRouter } from "next/navigation"
 import { signOut, useSession } from "next-auth/react"
 
 import { Avatar } from "./avatar"
@@ -16,8 +17,12 @@ import { NavItem } from "./nav-item"
 export function Sidebar() {
   const session = useSession()
 
+  const router = useRouter()
+
   async function handleSignOut() {
     await signOut()
+
+    router.replace("/")
   }
 
   return (
