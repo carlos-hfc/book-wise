@@ -23,12 +23,11 @@ export const config: Metadata = {
       alt: "BookWise Logo",
     },
   },
-  manifest: "/favicon/site.webmanifest",
   icons: {
-    shortcut: "/shortcut-icon.png",
+    shortcut: "/favicon/shortcut-icon.png",
     other: {
       rel: "mask-icon",
-      url: "/safari-pinned-tab.svg",
+      url: "/favicon/safari-pinned-tab.svg",
     },
   },
   metadataBase: new URL(String(process.env.NEXT_PUBLIC_BASE_URL)),
