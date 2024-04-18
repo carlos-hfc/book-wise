@@ -1,6 +1,5 @@
 import Image from "next/image"
 
-import book from "@/images/Book.png"
 import { cn } from "@/utils/cn"
 
 import { Rating } from "./rating"
@@ -34,7 +33,7 @@ export function Trending({
     >
       <div className={cn("relative", sizeS)}>
         <Image
-          src={book}
+          src="/images/a-revolucao-dos-bixos.png"
           alt=""
           fill
           className="rounded object-cover"

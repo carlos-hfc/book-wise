@@ -1,7 +1,5 @@
 import Image from "next/image"
 
-import book from "@/images/Book.png"
-
 import { Rating } from "./rating"
 
 export function Review() {
@@ -29,7 +27,7 @@ export function Review() {
       <div className="flex gap-5">
         <div className="relative aspect-[108_/_152] h-[152px] w-[108px]">
           <Image
-            src={book}
+            src="/images/a-revolucao-dos-bixos.png"
             alt=""
             fill
             className="rounded object-cover"

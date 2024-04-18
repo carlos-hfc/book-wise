@@ -18,7 +18,6 @@ import { createPortal } from "react-dom"
 
 import { Comment } from "@/components/comment"
 import { Rating } from "@/components/rating"
-import image from "@/images/Book.png"
 
 interface BookContextProps {
   open: boolean
@@ -70,7 +69,7 @@ export function BookProvider({ children }: BookProviderProps) {
                 <div className="flex gap-8">
                   <div className="relative aspect-[172_/_242] h-[242px] w-[172px]">
                     <Image
-                      src={image}
+                      src="/images/a-revolucao-dos-bixos.png"
                       alt=""
                       fill
                       className="rounded object-cover"

@@ -1,7 +1,5 @@
 import Image from "next/image"
 
-import book from "@/images/Book.png"
-
 import { Rating } from "./rating"
 
 export function LastRead() {
@@ -9,7 +7,7 @@ export function LastRead() {
     <div className="flex cursor-pointer gap-6 rounded-lg border-2 border-transparent bg-gray-600 px-6 py-5 hover:border-gray-500">
       <div className="relative aspect-[108_/_152] h-[152px] w-[108px]">
         <Image
-          src={book}
+          src="/images/a-revolucao-dos-bixos.png"
           alt=""
           fill
           className="rounded object-cover"
