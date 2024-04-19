@@ -5,8 +5,7 @@ export const books = [
     author: "Zeno Rocha",
     summary:
       "Nec tempor nunc in egestas. Euismod nisi eleifend at et in sagittis. Penatibus id vestibulum imperdiet a at imperdiet lectus leo. Sit porta eget nec vitae sit vulputate eget",
-    coverUrl:
-      "public/images/books/14-habitos-de-desenvolvedores-altamente-produtivos.png",
+    coverUrl: "/images/14-habitos-de-desenvolvedores-altamente-produtivos.png",
     totalPages: 160,
     categories: [
       {
@@ -25,7 +24,7 @@ export const books = [
     author: "J.R.R. Tolkien",
     summary:
       "Semper et sapien proin vitae nisi. Feugiat neque integer donec et aenean posuere amet ultrices. Cras fermentum id pulvinar varius leo a in. Amet libero pharetra nunc elementum fringilla velit ipsum. Sed vulputate massa velit nibh",
-    coverUrl: "public/images/books/o-hobbit.png",
+    coverUrl: "/images/o-hobbit.png",
     totalPages: 360,
     categories: [
       {
@@ -44,7 +43,7 @@ export const books = [
     author: "Douglas Adams",
     summary:
       "Nec tempor nunc in egestas. Euismod nisi eleifend at et in sagittis. Penatibus id vestibulum imperdiet a at imperdiet lectus leo. Sit porta eget nec vitae sit vulputate eget",
-    coverUrl: "public/images/books/o-guia-do-mochileiro-das-galáxias.png",
+    coverUrl: "/images/o-guia-do-mochileiro-das-galaxias.png",
     totalPages: 250,
     categories: [
       {
@@ -63,7 +62,7 @@ export const books = [
     author: "George Orwell",
     summary:
       "Nec tempor nunc in egestas. Euismod nisi eleifend at et in sagittis. Penatibus id vestibulum imperdiet a at imperdiet lectus leo. Sit porta eget nec vitae sit vulputate eget",
-    coverUrl: "public/images/books/a-revolucao-dos-bixos.png",
+    coverUrl: "/images/a-revolucao-dos-bixos.png",
     totalPages: 350,
     categories: [
       {
@@ -82,7 +81,7 @@ export const books = [
     author: "Isaac Asimov",
     summary:
       "Nec tempor nunc in egestas. Euismod nisi eleifend at et in sagittis. Penatibus id vestibulum imperdiet a at imperdiet lectus leo. Sit porta eget nec vitae sit vulputate eget",
-    coverUrl: "public/images/books/o-fim-da-eternidade.png",
+    coverUrl: "/images/o-fim-da-eternidade.png",
     totalPages: 165,
     categories: [
       {
@@ -101,7 +100,7 @@ export const books = [
     author: "Aditya Y. Bhargava",
     summary:
       "Nec tempor nunc in egestas. Euismod nisi eleifend at et in sagittis. Penatibus id vestibulum imperdiet a at imperdiet lectus leo. Sit porta eget nec vitae sit vulputate eget",
-    coverUrl: "public/images/books/entendendo-algoritmos.png",
+    coverUrl: "/images/entendendo-algoritmos.png",
     totalPages: 165,
     categories: [
       {
@@ -120,7 +119,7 @@ export const books = [
     author: "Robert C. Martin",
     summary:
       "Nec tempor nunc in egestas. Euismod nisi eleifend at et in sagittis. Penatibus id vestibulum imperdiet a at imperdiet lectus leo. Sit porta eget nec vitae sit vulputate eget",
-    coverUrl: "public/images/books/codigo-limpo.png",
+    coverUrl: "/images/codigo-limpo.png",
     totalPages: 365,
     categories: [
       {
@@ -139,7 +138,7 @@ export const books = [
     author: "Charles Duhigg",
     summary:
       "Nec tempor nunc in egestas. Euismod nisi eleifend at et in sagittis. Penatibus id vestibulum imperdiet a at imperdiet lectus leo. Sit porta eget nec vitae sit vulputate eget",
-    coverUrl: "public/images/books/o-poder-do-habito.png",
+    coverUrl: "/images/o-poder-do-habito.png",
     totalPages: 288,
     categories: [
       {
@@ -158,7 +157,7 @@ export const books = [
     author: "Robert C. Martin",
     summary:
       "Nec tempor nunc in egestas. Euismod nisi eleifend at et in sagittis. Penatibus id vestibulum imperdiet a at imperdiet lectus leo. Sit porta eget nec vitae sit vulputate eget",
-    coverUrl: "public/images/books/arquitetura-limpa.png",
+    coverUrl: "/images/arquitetura-limpa.png",
     totalPages: 288,
     categories: [
       {
@@ -177,7 +176,7 @@ export const books = [
     author: "Edgar Allan Poe",
     summary:
       "Nec tempor nunc in egestas. Euismod nisi eleifend at et in sagittis. Penatibus id vestibulum imperdiet a at imperdiet lectus leo. Sit porta eget nec vitae sit vulputate eget",
-    coverUrl: "public/images/books/historias-extraordinarias.png",
+    coverUrl: "/images/historias-extraordinarias.png",
     totalPages: 332,
     categories: [
       {
@@ -196,7 +195,7 @@ export const books = [
     author: "Martin Fowler",
     summary:
       "Nec tempor nunc in egestas. Euismod nisi eleifend at et in sagittis. Penatibus id vestibulum imperdiet a at imperdiet lectus leo. Sit porta eget nec vitae sit vulputate eget",
-    coverUrl: "public/images/books/refatoracao.png",
+    coverUrl: "/images/refatoracao.png",
     totalPages: 332,
     categories: [
       {
@@ -215,7 +214,7 @@ export const books = [
     author: "Eric Evans",
     summary:
       "Nec tempor nunc in egestas. Euismod nisi eleifend at et in sagittis. Penatibus id vestibulum imperdiet a at imperdiet lectus leo. Sit porta eget nec vitae sit vulputate eget",
-    coverUrl: "public/images/books/domain-driven-design.png",
+    coverUrl: "/images/domain-driven-design.png",
     totalPages: 288,
     categories: [
       {
@@ -234,7 +233,7 @@ export const books = [
     author: "Julio Verne",
     summary:
       "Nec tempor nunc in egestas. Euismod nisi eleifend at et in sagittis. Penatibus id vestibulum imperdiet a at imperdiet lectus leo. Sit porta eget nec vitae sit vulputate eget",
-    coverUrl: "public/images/books/viagem-ao-centro-da-terra.png",
+    coverUrl: "/images/viagem-ao-centro-da-terra.png",
     totalPages: 288,
     categories: [
       {
@@ -253,7 +252,7 @@ export const books = [
     author: "Junji Ito",
     summary:
       "Nec tempor nunc in egestas. Euismod nisi eleifend at et in sagittis. Penatibus id vestibulum imperdiet a at imperdiet lectus leo. Sit porta eget nec vitae sit vulputate eget",
-    coverUrl: "public/images/books/fragmentos-do-horror.png",
+    coverUrl: "/images/fragmentos-do-horror.png",
     totalPages: 144,
     categories: [
       {
@@ -272,7 +271,7 @@ export const books = [
     author: "Andrew Hunt",
     summary:
       "Nec tempor nunc in egestas. Euismod nisi eleifend at et in sagittis. Penatibus id vestibulum imperdiet a at imperdiet lectus leo. Sit porta eget nec vitae sit vulputate eget",
-    coverUrl: "public/images/books/o-programador-pragmatico.png",
+    coverUrl: "/images/o-programador-pragmatico.png",
     totalPages: 205,
     categories: [
       {
