@@ -2,23 +2,11 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { useRouter } from "next/navigation"
-import { signIn, useSession } from "next-auth/react"
-import { useEffect } from "react"
+import { signIn } from "next-auth/react"
 
 import { AccessButton } from "@/components/access-button"
 
 export default function App() {
-  const session = useSession()
-
-  const router = useRouter()
-
-  useEffect(() => {
-    if (session.status === "authenticated") {
-      router.replace("/home")
-    }
-  }, [router, session])
-
   async function handleConnect() {
     await signIn("github")
   }
