@@ -5,20 +5,49 @@ import { UrlParams } from "@/@types"
 import { BookCard } from "@/components/book-card"
 import { Input } from "@/components/input"
 import { Profile } from "@/components/profile"
+import { PROFILE_INFO } from "@/constants/next-tags"
 
 interface PerfilProps extends UrlParams<"id"> {}
+
+interface ProfileResponse {
+  user: {
+    id: string
+    name: string
+    email: string
+    avatarUrl: string
+    createdAt: string
+  }
+  books: number
+  pages: number
+  category?: string
+  ratings: {
+    id: string
+    description: string
+    rate: number
+    createdAt: string
+    book: {
+      name: string
+      author: string
+      coverUrl: string
+    }
+  }[]
+}
 
 export default async function Perfil({ params }: PerfilProps) {
   const response = await fetch(
     `http://localhost:3000/api/perfil/${params.id}`,
-    { cache: "no-cache" },
+    {
+      next: { tags: [PROFILE_INFO] },
+      cache: "force-cache",
+    },
   )
 
   if (response.status !== 200) {
     notFound()
   }
 
-  const { user } = await response.json()
+  const { user, books, pages, category, ratings } =
+    (await response.json()) as ProfileResponse
 
   return (
     <main className="flex-1 px-24 py-18">
@@ -35,17 +64,23 @@ export default async function Perfil({ params }: PerfilProps) {
           />
 
           <div className="flex flex-col gap-6">
-            <BookCard />
-            <BookCard />
-            <BookCard />
-            <BookCard />
-            <BookCard />
+            {ratings.map(rating => (
+              <BookCard
+                key={rating.id}
+                {...rating}
+              />
+            ))}
           </div>
         </div>
 
         <div className="relative w-2/6">
           <div className="fixed">
-            <Profile user={user} />
+            <Profile
+              user={user}
+              books={books}
+              pages={pages}
+              category={category}
+            />
           </div>
         </div>
       </div>

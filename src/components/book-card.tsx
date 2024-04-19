@@ -1,49 +1,59 @@
-import Image from "next/image"
+import { formatDistanceToNow } from "date-fns"
+import { ptBR } from "date-fns/locale"
 
+import { BookImage } from "./book-image"
 import { Rating } from "./rating"
 
-export function BookCard() {
+interface BookCardProps {
+  id: string
+  description: string
+  rate: number
+  createdAt: string
+  book: {
+    name: string
+    author: string
+    coverUrl: string
+  }
+}
+
+export function BookCard(props: BookCardProps) {
   return (
     <article>
-      <time className="mb-2 block text-sm leading-relaxed text-gray-300">
-        Há 2 dias
+      <time
+        className="mb-2 block text-sm leading-relaxed text-gray-300 first-letter:capitalize"
+        dateTime={props.createdAt}
+        title={new Date(props.createdAt).toLocaleString()}
+      >
+        {formatDistanceToNow(props.createdAt, {
+          addSuffix: true,
+          locale: ptBR,
+        })}
       </time>
 
       <div className="flex flex-col gap-6 rounded-lg bg-gray-700 p-6">
         <div className="flex gap-6">
-          <div className="relative aspect-[98_/_134] h-[134px] w-[98px]">
-            <Image
-              src="/images/a-revolucao-dos-bixos.png"
-              alt=""
-              fill
-              className="rounded object-cover"
-            />
-          </div>
+          <BookImage
+            src={props.book.coverUrl}
+            alt={props.book.name}
+          />
 
           <div className="flex flex-col">
             <h3 className="text-lg font-bold leading-snug text-gray-100">
-              A revolução dos bichos
+              {props.book.name}
             </h3>
             <span className="text-sm leading-relaxed text-gray-400">
-              George Orwell
+              {props.book.author}
             </span>
 
             <Rating
-              rating={4}
+              rating={props.rate}
               className="mt-auto"
             />
           </div>
         </div>
 
         <p className="text-sm leading-relaxed text-gray-300">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reiciendis,
-          maiores provident sequi minima doloribus facilis inventore blanditiis
-          eveniet quis quod veniam libero, eos omnis enim quidem iste neque
-          perferendis adipisci? Recusandae exercitationem, voluptatem
-          praesentium rerum officiis, sunt tempore modi saepe ipsa dolore
-          laboriosam cupiditate? At reprehenderit consequuntur esse ut
-          exercitationem minus voluptatum possimus distinctio sequi odit id,
-          eveniet harum perferendis!
+          {props.description}
         </p>
       </div>
     </article>

@@ -10,8 +10,88 @@ export async function GET(_: NextRequest, { params }: UrlParams<"id">) {
     },
   })
 
-  if (!user)
+  if (!user) {
     return Response.json({ message: "user nao encontrado" }, { status: 404 })
+  }
 
-  return Response.json({ user })
+  const ratings = await prisma.rating.findMany({
+    where: {
+      userId: user.id,
+    },
+    select: {
+      id: true,
+      description: true,
+      rate: true,
+      createdAt: true,
+      book: {
+        select: {
+          name: true,
+          author: true,
+          coverUrl: true,
+        },
+      },
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+  })
+
+  const { _count: count, _sum: sum } = await prisma.book.aggregate({
+    where: {
+      ratings: {
+        some: {
+          userId: user.id,
+        },
+      },
+    },
+    _sum: {
+      totalPages: true,
+    },
+    _count: {
+      _all: true,
+    },
+  })
+
+  const countCategory = await prisma.categoriesOnBooks.groupBy({
+    by: ["categoryId"],
+    where: {
+      book: {
+        ratings: {
+          some: {
+            userId: user.id,
+          },
+        },
+      },
+    },
+    _count: {
+      categoryId: true,
+    },
+    orderBy: {
+      _count: {
+        categoryId: "desc",
+      },
+    },
+    take: 1,
+  })
+
+  let category: { name: string } | null = null
+
+  if (countCategory.length > 0) {
+    category = await prisma.category.findUnique({
+      where: {
+        id: countCategory[0].categoryId,
+      },
+      select: {
+        name: true,
+      },
+    })
+  }
+
+  return Response.json({
+    user,
+    category: category?.name ?? undefined,
+    books: count._all,
+    pages: sum.totalPages ?? 0,
+    ratings,
+  })
 }
