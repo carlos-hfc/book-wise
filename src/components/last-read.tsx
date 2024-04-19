@@ -1,42 +1,54 @@
-import Image from "next/image"
+import { formatDistanceToNow } from "date-fns"
+import { ptBR } from "date-fns/locale"
 
+import { BookImage } from "./book-image"
 import { Rating } from "./rating"
 
-export function LastRead() {
+interface LastReadProps {
+  id: string
+  rate: number
+  description: string
+  createdAt: string
+  coverUrl: string
+  name: string
+  author: string
+}
+
+export function LastRead(props: LastReadProps) {
   return (
     <div className="flex cursor-pointer gap-6 rounded-lg border-2 border-transparent bg-gray-600 px-6 py-5 hover:border-gray-500">
-      <div className="relative aspect-[108_/_152] h-[152px] w-[108px]">
-        <Image
-          src="/images/a-revolucao-dos-bixos.png"
-          alt=""
-          fill
-          className="rounded object-cover"
-        />
-      </div>
+      <BookImage
+        src={props.coverUrl}
+        alt={props.name}
+      />
 
       <div className="flex flex-col">
         <header className="mb-3 flex justify-between">
-          <time className="text-sm leading-relaxed text-gray-300">
-            Há 2 dias
+          <time
+            className="text-sm leading-relaxed text-gray-300"
+            dateTime={props.createdAt}
+            title={new Date(props.createdAt).toLocaleString()}
+          >
+            {formatDistanceToNow(props.createdAt, {
+              addSuffix: true,
+              locale: ptBR,
+            })}
           </time>
 
-          <Rating rating={4} />
+          <Rating rating={props.rate} />
         </header>
 
         <div>
           <h3 className="text-base font-bold leading-snug text-gray-100">
-            A revolução dos bichos
+            {props.name}
           </h3>
           <span className="text-sm leading-relaxed text-gray-400">
-            George Orwell
+            {props.author}
           </span>
         </div>
 
         <p className="mt-auto line-clamp-2 text-sm leading-relaxed text-gray-300">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut
-          molestias reiciendis consequuntur mollitia aperiam accusantium!
-          Praesentium quidem, distinctio itaque magnam inventore, dolore omnis
-          iste cupiditate consectetur voluptate quia, quasi voluptatum.
+          {props.description}
         </p>
       </div>
     </div>

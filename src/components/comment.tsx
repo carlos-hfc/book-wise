@@ -16,6 +16,7 @@ export function Comment({ isMine = false }: CommentProps) {
         <Avatar
           src="https://github.com/carlos-hfc.png"
           alt=""
+          href="/"
         />
 
         <div className="flex-1">

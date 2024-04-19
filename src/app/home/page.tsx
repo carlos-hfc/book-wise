@@ -2,10 +2,35 @@ import { CaretRight, ChartLineUp } from "@phosphor-icons/react/dist/ssr"
 
 import { Action } from "@/components/action"
 import { LastRead } from "@/components/last-read"
-import { Review } from "@/components/review"
-import { Trending } from "@/components/trending"
+import { LAST_READ } from "@/constants/next-tags"
+import { cn } from "@/utils/cn"
 
-export default function Home() {
+import { Popular } from "./components/popular"
+import { Reviews } from "./components/reviews"
+
+interface LastReadResponse {
+  user?: {
+    id: string
+  }
+  lastRead?: {
+    id: string
+    rate: number
+    description: string
+    createdAt: string
+    coverUrl: string
+    name: string
+    author: string
+  }
+}
+
+export default async function Home() {
+  const response = await fetch(`http://localhost:3000/api/last-read`, {
+    next: { tags: [LAST_READ] },
+    cache: "force-cache",
+  })
+
+  const { lastRead, user } = (await response.json()) as LastReadResponse
+
   return (
     <main className="flex-1 px-24 py-18">
       <h1 className="flex items-center gap-3 text-2xl leading-snug text-gray-100">
@@ -15,36 +40,41 @@ export default function Home() {
 
       <div className="mt-10 flex gap-16">
         <div className="w-4/6 space-y-3">
-          <p className="mb-4 mt-0 flex items-center justify-between text-sm leading-relaxed text-gray-100">
-            Sua última leitura
-            <Action
-              href="/"
-              color="purple"
-              size="sm"
-            >
-              Ver todos
-              <CaretRight />
-            </Action>
-          </p>
+          {lastRead && user && (
+            <>
+              <p className="mb-4 mt-0 flex items-center justify-between text-sm leading-relaxed text-gray-100">
+                Sua última leitura
+                <Action
+                  href={`/perfil/${user.id}`}
+                  color="purple"
+                  size="sm"
+                >
+                  Ver todos
+                  <CaretRight />
+                </Action>
+              </p>
 
-          <LastRead />
+              <LastRead {...lastRead} />
+            </>
+          )}
 
-          <p className="!mt-10 mb-4 flex items-center justify-between text-sm leading-relaxed text-gray-100">
+          <p
+            className={cn(
+              "mb-4 flex items-center justify-between text-sm leading-relaxed text-gray-100",
+              lastRead && "!mt-10",
+            )}
+          >
             Avaliações mais recentes
           </p>
 
-          <Review />
-          <Review />
-          <Review />
-          <Review />
-          <Review />
+          <Reviews />
         </div>
 
         <div className="w-2/6 space-y-3">
           <p className="mb-4 mt-0 flex items-center justify-between text-sm leading-relaxed text-gray-100">
             Livros populares
             <Action
-              href="/"
+              href="/explorar"
               color="purple"
               size="sm"
             >
@@ -53,10 +83,7 @@ export default function Home() {
             </Action>
           </p>
 
-          <Trending read />
-          <Trending />
-          <Trending />
-          <Trending />
+          <Popular />
         </div>
       </div>
     </main>

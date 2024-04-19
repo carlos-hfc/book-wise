@@ -1,48 +1,73 @@
-import Image from "next/image"
+import { formatDistanceToNow } from "date-fns"
+import { ptBR } from "date-fns/locale"
 
 import { Avatar } from "./avatar"
+import { BookImage } from "./book-image"
 import { Rating } from "./rating"
 
-export function Review() {
+interface ReviewProps {
+  id: string
+  rate: number
+  description: string
+  createdAt: string
+  book: {
+    author: string
+    name: string
+    coverUrl: string
+  }
+  user: {
+    id: string
+    name: string
+    avatarUrl: string | null
+  }
+}
+
+export function Review(props: ReviewProps) {
   return (
     <div className="flex flex-col gap-8 rounded-lg bg-gray-700 p-6">
       <header className="flex justify-between gap-4">
         <Avatar
-          src="https://github.com/carlos-hfc.png"
-          alt=""
+          src={props.user.avatarUrl ?? ""}
+          alt={props.user.name}
+          href={`/perfil/${props.user.id}`}
         />
 
         <div className="flex-1">
           <h2 className="text-base leading-relaxed text-gray-200">
-            Carlos Faustino
+            {props.user.name}
           </h2>
-          <time className="text-sm leading-relaxed text-gray-400">Hoje</time>
+          <time
+            className="text-sm leading-relaxed text-gray-400"
+            dateTime={props.createdAt}
+            title={new Date(props.createdAt).toLocaleString()}
+          >
+            {formatDistanceToNow(props.createdAt, {
+              addSuffix: true,
+              locale: ptBR,
+            })}
+          </time>
         </div>
 
-        <Rating rating={4} />
+        <Rating rating={props.rate} />
       </header>
 
       <div className="flex gap-5">
-        <div className="relative aspect-[108_/_152] h-[152px] w-[108px]">
-          <Image
-            src="/images/a-revolucao-dos-bixos.png"
-            alt=""
-            fill
-            className="rounded object-cover"
-          />
-        </div>
+        <BookImage
+          src={props.book.coverUrl}
+          alt={props.book.name}
+          quality={50}
+        />
 
         <div className="flex flex-col">
           <h3 className="text-sm font-bold leading-snug text-gray-100">
-            O Hobbit
+            {props.book.name}
           </h3>
           <span className="text-sm leading-relaxed text-gray-400">
-            J.R.R. Tolkien
+            {props.book.author}
           </span>
 
           <p className="mt-5 line-clamp-4 text-sm leading-relaxed text-gray-300">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio
-            quo voluptatum quidem ad
+            {props.description}
           </p>
         </div>
       </div>

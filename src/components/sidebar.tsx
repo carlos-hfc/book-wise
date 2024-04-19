@@ -57,6 +57,7 @@ export function Sidebar() {
             <Avatar
               src={session.data?.user.avatarUrl ?? ""}
               alt={session.data?.user.name ?? ""}
+              href=""
             />
 
             <span className="text-sm leading-relaxed text-gray-200">
@@ -67,7 +68,7 @@ export function Sidebar() {
               className="flex size-7 items-center justify-center"
               onClick={handleSignOut}
             >
-              <SignOut className="text-danger-light size-5" />
+              <SignOut className="size-5 text-danger-light" />
             </button>
           </div>
         ) : (

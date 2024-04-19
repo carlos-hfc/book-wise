@@ -58,7 +58,7 @@ export function BookProvider({ children }: BookProviderProps) {
               onClick={() => onOpenChange(false)}
             />
 
-            <aside className="absolute right-0 flex h-full w-[650px] flex-col overflow-y-auto overflow-x-hidden bg-gray-800 px-12 pb-20 pt-6 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-600 [&::-webkit-scrollbar-thumb]:shadow-[inset_0_0_0_1px] [&::-webkit-scrollbar-thumb]:shadow-gray-700 [&::-webkit-scrollbar-track]:bg-gray-700 [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar]:rounded-full">
+            <aside className="fixed right-0 flex h-full w-[650px] flex-col overflow-y-auto overflow-x-hidden bg-gray-800 px-12 pb-20 pt-6 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-600 [&::-webkit-scrollbar-thumb]:shadow-[inset_0_0_0_1px] [&::-webkit-scrollbar-thumb]:shadow-gray-700 [&::-webkit-scrollbar-track]:bg-gray-700 [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar]:rounded-full">
               <button
                 onClick={() => onOpenChange(false)}
                 className="mb-4 self-end"
@@ -141,6 +141,7 @@ export function BookProvider({ children }: BookProviderProps) {
                       <Avatar
                         src="https://github.com/carlos-hfc.png"
                         alt=""
+                        href=""
                       />
 
                       <div className="flex-1">
