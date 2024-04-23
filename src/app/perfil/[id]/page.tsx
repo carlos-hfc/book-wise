@@ -3,10 +3,15 @@ import { notFound } from "next/navigation"
 
 import { UrlParams } from "@/@types"
 import { BookCard } from "@/components/book-card"
-import { Input } from "@/components/input"
 import { Profile } from "@/components/profile"
 
-interface PerfilProps extends UrlParams<"id"> {}
+import { Filter } from "./components/filter"
+
+interface PerfilProps extends UrlParams<"id"> {
+  searchParams: {
+    q: string
+  }
+}
 
 interface ProfileResponse {
   user: {
@@ -33,8 +38,12 @@ interface ProfileResponse {
   }[]
 }
 
-export default async function Perfil({ params }: PerfilProps) {
-  const response = await fetch(`http://localhost:3000/api/perfil/${params.id}`)
+export default async function Perfil({ params, searchParams }: PerfilProps) {
+  const urlParams = new URLSearchParams(searchParams)
+
+  const response = await fetch(
+    `http://localhost:3000/api/perfil/${params.id}?${urlParams.toString()}`,
+  )
 
   if (response.status !== 200) {
     notFound()
@@ -52,10 +61,7 @@ export default async function Perfil({ params }: PerfilProps) {
 
       <div className="mt-10 flex gap-16">
         <div className="w-4/6">
-          <Input
-            placeholder="Buscar livro avaliado"
-            className="mb-8 w-full"
-          />
+          <Filter />
 
           <div className="flex flex-col gap-6">
             {ratings.map(rating => (

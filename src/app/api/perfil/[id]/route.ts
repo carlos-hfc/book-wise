@@ -3,7 +3,9 @@ import { NextRequest } from "next/server"
 import { UrlParams } from "@/@types"
 import { prisma } from "@/lib/prisma"
 
-export async function GET(_: NextRequest, { params }: UrlParams<"id">) {
+export async function GET(request: NextRequest, { params }: UrlParams<"id">) {
+  const book = request.nextUrl.searchParams.get("book") ?? ""
+
   const user = await prisma.user.findUnique({
     where: {
       id: params.id,
@@ -17,6 +19,11 @@ export async function GET(_: NextRequest, { params }: UrlParams<"id">) {
   const ratings = await prisma.rating.findMany({
     where: {
       userId: user.id,
+      book: {
+        name: {
+          contains: book,
+        },
+      },
     },
     select: {
       id: true,
