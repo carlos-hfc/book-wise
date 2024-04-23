@@ -10,6 +10,7 @@ interface BookCardProps {
   rate: number
   createdAt: string
   book: {
+    id: string
     name: string
     author: string
     coverUrl: string
@@ -35,6 +36,7 @@ export function BookCard(props: BookCardProps) {
           <BookImage
             src={props.book.coverUrl}
             alt={props.book.name}
+            bookId={props.book.id}
           />
 
           <div className="flex flex-col">

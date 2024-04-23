@@ -20,9 +20,10 @@ export function LastRead(props: LastReadProps) {
       <BookImage
         src={props.coverUrl}
         alt={props.name}
+        bookId={props.id}
       />
 
-      <div className="flex flex-col">
+      <div className="flex flex-1 flex-col">
         <header className="mb-3 flex justify-between">
           <time
             className="text-sm leading-relaxed text-gray-300"

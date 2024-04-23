@@ -1,5 +1,6 @@
 import { formatDistanceToNow } from "date-fns"
 import { ptBR } from "date-fns/locale"
+import Link from "next/link"
 
 import { Avatar } from "./avatar"
 import { BookImage } from "./book-image"
@@ -11,6 +12,7 @@ interface ReviewProps {
   description: string
   createdAt: string
   book: {
+    id: string
     author: string
     name: string
     coverUrl: string
@@ -18,7 +20,7 @@ interface ReviewProps {
   user: {
     id: string
     name: string
-    avatarUrl: string | null
+    image: string | null
   }
 }
 
@@ -27,9 +29,11 @@ export function Review(props: ReviewProps) {
     <div className="flex flex-col gap-8 rounded-lg bg-gray-700 p-6">
       <header className="flex justify-between gap-4">
         <Avatar
-          src={props.user.avatarUrl ?? ""}
+          src={props.user.image ?? ""}
           alt={props.user.name}
+          as={Link}
           href={`/perfil/${props.user.id}`}
+          prefetch={false}
         />
 
         <div className="flex-1">
@@ -56,6 +60,7 @@ export function Review(props: ReviewProps) {
           src={props.book.coverUrl}
           alt={props.book.name}
           quality={50}
+          bookId={props.book.id}
         />
 
         <div className="flex flex-col">

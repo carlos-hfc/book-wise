@@ -13,7 +13,7 @@ interface ProfileProps {
     id: string
     name: string
     email: string
-    avatarUrl: string
+    image: string
     createdAt: string
   }
   books: number
@@ -26,10 +26,9 @@ export function Profile({ user, books, pages, category }: ProfileProps) {
     <div className="flex flex-col items-center border-l border-gray-700 px-14">
       <div className="flex flex-col items-center pb-2">
         <Avatar
-          src={user.avatarUrl}
+          src={user.image}
           alt={user.name}
           size="md"
-          href={""}
         />
 
         <h2 className="mt-5 text-xl font-bold leading-snug text-gray-100">

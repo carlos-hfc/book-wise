@@ -1,29 +1,14 @@
-"use client"
-
-import {
-  Binoculars,
-  ChartLineUp,
-  SignIn,
-  SignOut,
-  User,
-} from "@phosphor-icons/react/dist/ssr"
+import { Binoculars, ChartLineUp, User } from "@phosphor-icons/react/dist/ssr"
 import Image from "next/image"
-import { useRouter } from "next/navigation"
-import { signOut, useSession } from "next-auth/react"
+import { getServerSession } from "next-auth/next"
 
-import { Avatar } from "./avatar"
+import { authOptions } from "@/lib/auth"
+
 import { NavItem } from "./nav-item"
+import { SidebarFooter } from "./sidebar-footer"
 
-export function Sidebar() {
-  const session = useSession()
-
-  const router = useRouter()
-
-  async function handleSignOut() {
-    await signOut()
-
-    router.replace("/")
-  }
+export async function Sidebar() {
+  const session = await getServerSession(authOptions)
 
   return (
     <div className="relative h-full w-64">
@@ -44,39 +29,15 @@ export function Sidebar() {
             <Binoculars />
             Explorar
           </NavItem>
-          {session.status === "authenticated" && (
-            <NavItem href={`/perfil/${session.data.user.id}`}>
+          {session?.user && (
+            <NavItem href={`/perfil/${session.user.id}`}>
               <User />
               Perfil
             </NavItem>
           )}
         </nav>
 
-        {session.status === "authenticated" ? (
-          <div className="flex items-center gap-3">
-            <Avatar
-              src={session.data?.user.avatarUrl ?? ""}
-              alt={session.data?.user.name ?? ""}
-              href=""
-            />
-
-            <span className="text-sm leading-relaxed text-gray-200">
-              {session.data?.user.name}
-            </span>
-
-            <button
-              className="flex size-7 items-center justify-center"
-              onClick={handleSignOut}
-            >
-              <SignOut className="size-5 text-danger-light" />
-            </button>
-          </div>
-        ) : (
-          <button className="flex items-center gap-3 rounded px-2 py-1 text-base font-bold leading-relaxed text-gray-200 hover:bg-gray-200/[.04]">
-            Fazer login
-            <SignIn className="size-5 text-green-100" />
-          </button>
-        )}
+        <SidebarFooter user={session?.user} />
       </aside>
     </div>
   )

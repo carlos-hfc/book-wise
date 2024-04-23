@@ -1,8 +1,8 @@
 import { CaretRight, ChartLineUp } from "@phosphor-icons/react/dist/ssr"
+import { headers } from "next/headers"
 
 import { Action } from "@/components/action"
 import { LastRead } from "@/components/last-read"
-import { LAST_READ } from "@/constants/next-tags"
 import { cn } from "@/utils/cn"
 
 import { Popular } from "./components/popular"
@@ -25,8 +25,7 @@ interface LastReadResponse {
 
 export default async function Home() {
   const response = await fetch(`http://localhost:3000/api/last-read`, {
-    next: { tags: [LAST_READ] },
-    cache: "force-cache",
+    headers: headers(),
   })
 
   const { lastRead, user } = (await response.json()) as LastReadResponse

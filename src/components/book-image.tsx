@@ -9,9 +9,10 @@ import { cn } from "@/utils/cn"
 
 interface BookImageProps extends ComponentProps<typeof Image> {
   size?: "xl" | "lg" | "md" | "sm"
+  bookId?: string
 }
 
-export function BookImage({ size = "lg", ...props }: BookImageProps) {
+export function BookImage({ size = "lg", bookId, ...props }: BookImageProps) {
   const { onOpenChange } = useBook()
 
   let sizeS = ""
@@ -39,7 +40,7 @@ export function BookImage({ size = "lg", ...props }: BookImageProps) {
   return (
     <div
       className={cn("relative cursor-pointer", sizeS)}
-      onClick={() => onOpenChange(true)}
+      onClick={() => onOpenChange(bookId ?? "")}
     >
       <Image
         {...props}

@@ -23,6 +23,7 @@ export function Action({
   return (
     <Link
       {...props}
+      prefetch={false}
       className={cn(
         "flex items-center rounded px-2 py-1 font-bold leading-relaxed no-underline",
         colorS,

@@ -1,26 +1,35 @@
 import Image from "next/image"
-import Link, { LinkProps } from "next/link"
-import { ComponentProps } from "react"
+import {
+  ComponentProps,
+  ComponentPropsWithoutRef,
+  ElementType,
+  Fragment,
+} from "react"
 
 import { cn } from "@/utils/cn"
 
-interface AvatarProps extends ComponentProps<typeof Image> {
+type AvatarProps<T extends ElementType> = {
   size?: "md" | "sm"
-  href: LinkProps["href"]
-}
+  as?: T | ElementType
+} & (ComponentPropsWithoutRef<T> & ComponentProps<typeof Image>)
 
-export function Avatar({ size = "sm", ...props }: AvatarProps) {
+export function Avatar<T extends ElementType>({
+  size = "sm",
+  as = Fragment,
+  src,
+  alt,
+  ...props
+}: AvatarProps<T>) {
+  const Tag: ElementType = as
+
   const sizeS = size === "sm" ? "size-10" : "size-18"
   const widthHeight = size === "sm" ? 40 : 72
 
   return (
-    <Link
-      href={props.href}
-      prefetch={false}
-    >
+    <Tag {...(as !== Fragment && props)}>
       <Image
-        {...props}
-        alt={props.alt}
+        src={src}
+        alt={alt}
         width={widthHeight}
         height={widthHeight}
         className={cn(
@@ -29,6 +38,6 @@ export function Avatar({ size = "sm", ...props }: AvatarProps) {
           props.className,
         )}
       />
-    </Link>
+    </Tag>
   )
 }

@@ -15,6 +15,7 @@ export function NavItem(props: NavItemProps) {
   return (
     <Link
       {...props}
+      prefetch={false}
       className={cn(
         "relative flex items-center gap-3 py-2 text-base leading-relaxed no-underline *:size-6 hover:text-gray-100",
         (props.href as string).includes(pathname.replace(params.id, ""))

@@ -5,7 +5,6 @@ import { UrlParams } from "@/@types"
 import { BookCard } from "@/components/book-card"
 import { Input } from "@/components/input"
 import { Profile } from "@/components/profile"
-import { PROFILE_INFO } from "@/constants/next-tags"
 
 interface PerfilProps extends UrlParams<"id"> {}
 
@@ -14,7 +13,7 @@ interface ProfileResponse {
     id: string
     name: string
     email: string
-    avatarUrl: string
+    image: string
     createdAt: string
   }
   books: number
@@ -26,6 +25,7 @@ interface ProfileResponse {
     rate: number
     createdAt: string
     book: {
+      id: string
       name: string
       author: string
       coverUrl: string
@@ -34,13 +34,7 @@ interface ProfileResponse {
 }
 
 export default async function Perfil({ params }: PerfilProps) {
-  const response = await fetch(
-    `http://localhost:3000/api/perfil/${params.id}`,
-    {
-      next: { tags: [PROFILE_INFO] },
-      cache: "force-cache",
-    },
-  )
+  const response = await fetch(`http://localhost:3000/api/perfil/${params.id}`)
 
   if (response.status !== 200) {
     notFound()
