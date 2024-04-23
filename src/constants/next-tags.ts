@@ -1,4 +1,0 @@
-export const POPULAR_BOOKS = "POPULAR_BOOKS"
-export const LATEST_REVIEW = "LATEST_REVIEW"
-export const PROFILE_INFO = "PROFILE_INFO"
-export const LAST_READ = "LAST_READ"

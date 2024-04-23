@@ -2,13 +2,14 @@
 
 import Image from "next/image"
 import Link from "next/link"
+import { BuiltInProviderType } from "next-auth/providers/index"
 import { signIn } from "next-auth/react"
 
 import { AccessButton } from "@/components/access-button"
 
 export default function App() {
-  async function handleConnect() {
-    await signIn("github")
+  async function handleConnect(provider: BuiltInProviderType) {
+    await signIn(provider)
   }
 
   return (
@@ -35,11 +36,16 @@ export default function App() {
           </header>
 
           <div className="space-y-4">
-            <AccessButton access="google">Entrar com Google</AccessButton>
+            <AccessButton
+              access="google"
+              onClick={() => handleConnect("google")}
+            >
+              Entrar com Google
+            </AccessButton>
 
             <AccessButton
               access="github"
-              onClick={handleConnect}
+              onClick={() => handleConnect("github")}
             >
               Entrar com GitHub
             </AccessButton>
