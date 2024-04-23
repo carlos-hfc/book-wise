@@ -1,27 +1,14 @@
-import { cookies } from "next/headers"
+import { getServerSession } from "next-auth/next"
 
+import { authOptions } from "@/lib/auth"
 import { prisma } from "@/lib/prisma"
 
 export async function GET() {
-  const authCookie = cookies().get("next-auth.session-token")
-
-  if (!authCookie?.value) {
-    return Response.json({}, { status: 400 })
-  }
-
-  const user = await prisma.user.findFirst({
-    where: {
-      sessions: {
-        some: {
-          sessionToken: authCookie?.value,
-        },
-      },
-    },
-  })
+  const session = await getServerSession(authOptions)
 
   const rating = await prisma.rating.findFirst({
     where: {
-      userId: user?.id,
+      userId: session?.user.id ?? "",
     },
     select: {
       rate: true,
@@ -40,12 +27,11 @@ export async function GET() {
       createdAt: "desc",
     },
   })
-
   if (!rating) return Response.json({}, { status: 404 })
 
   return Response.json({
     user: {
-      id: user?.id,
+      id: session?.user.id,
     },
     lastRead: {
       id: rating.book.id,

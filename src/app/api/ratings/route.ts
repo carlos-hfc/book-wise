@@ -9,6 +9,7 @@ export async function GET() {
       rate: true,
       book: {
         select: {
+          id: true,
           name: true,
           author: true,
           coverUrl: true,
@@ -18,7 +19,7 @@ export async function GET() {
         select: {
           id: true,
           name: true,
-          avatarUrl: true,
+          image: true,
         },
       },
     },

@@ -25,6 +25,7 @@ export async function GET(_: NextRequest, { params }: UrlParams<"id">) {
       createdAt: true,
       book: {
         select: {
+          id: true,
           name: true,
           author: true,
           coverUrl: true,
