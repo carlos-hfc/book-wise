@@ -6,6 +6,7 @@ import { signOut } from "next-auth/react"
 
 import { CustomUser } from "@/@types/next-auth"
 
+import { Action } from "./action"
 import { Avatar } from "./avatar"
 
 interface SidebarFooterProps {
@@ -37,9 +38,9 @@ export function SidebarFooter({ user }: SidebarFooterProps) {
       </button>
     </div>
   ) : (
-    <button className="flex items-center gap-3 rounded px-2 py-1 text-base font-bold leading-relaxed text-gray-200 hover:bg-gray-200/[.04]">
+    <Action href="/">
       Fazer login
       <SignIn className="size-5 text-green-100" />
-    </button>
+    </Action>
   )
 }
