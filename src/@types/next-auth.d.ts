@@ -1,14 +1,9 @@
-import "next-auth"
+import { DefaultUser } from "next-auth"
+
+interface CustomUser extends DefaultUser {}
 
 declare module "next-auth" {
-  export interface User {
-    id: string
-    name: string
-    avatarUrl: string
-    createdAt: Date
-  }
-
   export interface Session {
-    user: User
+    user: CustomUser
   }
 }
