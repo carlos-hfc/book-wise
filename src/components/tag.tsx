@@ -15,7 +15,7 @@ export function Tag({ selected = false, ...props }: TagProps) {
     <button
       {...props}
       className={cn(
-        "flex cursor-pointer items-center justify-center rounded-full border px-4 py-1 text-base hover:bg-purple-200 hover:text-gray-100",
+        "flex cursor-pointer select-none items-center justify-center rounded-full border px-4 py-1 text-base hover:bg-purple-200 hover:text-gray-100",
         selectedS,
         props.className,
       )}
